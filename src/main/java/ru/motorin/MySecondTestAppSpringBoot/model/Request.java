@@ -15,14 +15,14 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Request {
-    @NotBlank
+    @NotBlank(message = "Не заполнено поле UID")
     @Size(max = 32, message = "{validation.name.size.too_long}")
     private String uid;
-    @NotBlank
+    @NotBlank(message = "Не заполнено поле operationUid")
     @Size(max = 32, message = "{validation.name.size.too_long}")
     private String operationUid;
-    private String systemName;
-    @NotBlank
+    private Systems systemName;
+    @NotBlank(message = "Не заполнено поле systemTime")
     private String systemTime;
     private String source;
     @Min(1)
@@ -31,5 +31,20 @@ public class Request {
     private int templateId;
     private int productCode;
     private int smsCode;
+
+    @Override
+    public String toString() {
+        return "{" +
+                "uid='" + uid + '\'' +
+                ", operationUid='" + operationUid + '\'' +
+                ", systemName='" + systemName + '\'' + 
+                ", systemTime='" + systemTime + '\'' +
+                ", source='" + source + '\'' +
+                ", communicationId=" + communicationId +
+                ", templateId=" + templateId +
+                ", productCode=" + productCode +
+                ", smsCode=" + smsCode +
+                '}';
+    }
 
 }
