@@ -18,6 +18,7 @@ import ru.motorin.MySecondTestAppSpringBoot.util.DateTimeUtil;
 
 import javax.validation.Valid;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Slf4j
@@ -73,6 +74,12 @@ public class MyController {
         }
         modifyResponseService.modify(response);
         log.info("modified response: {}", response);
+
+        try {
+            long millsecDelay = new Date().getTime() -
+                    DateTimeUtil.getCustomFormat().parse(request.getSystemTime()).getTime();
+            log.info("service 2 time - service 1 time = {} sec", millsecDelay / 1000.0);
+        } catch (Exception e) { }
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }

@@ -21,7 +21,7 @@ public class Request {
     @NotBlank(message = "Не заполнено поле operationUid")
     @Size(max = 32, message = "{validation.name.size.too_long}")
     private String operationUid;
-    private Systems systemName;
+    private String systemName;
     @NotBlank(message = "Не заполнено поле systemTime")
     private String systemTime;
     private String source;
